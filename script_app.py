@@ -85,11 +85,11 @@ def interpolationParJokers(liste_cartes):
     JokerRouge = liste_cartes.index(54)
     premierTas = liste_cartes[: min(JokerNoir, JokerRouge)]
     secondTas = liste_cartes[min(JokerNoir, JokerRouge) + 1 : max(JokerNoir, JokerRouge)]
-    troisièmeTas = liste_cartes[max(JokerNoir, JokerRouge) + 1:]
+    troisiemeTas = liste_cartes[max(JokerNoir, JokerRouge) + 1:]
     if min(JokerNoir, JokerRouge) == JokerNoir:
-        liste_cartes = troisièmeTas + [53] + secondTas + [54] + premierTas
+        liste_cartes = troisiemeTas + [53] + secondTas + [54] + premierTas
     else:
-        liste_cartes = troisièmeTas + [54] + secondTas + [53] + premierTas
+        liste_cartes = troisiemeTas + [54] + secondTas + [53] + premierTas
     return liste_cartes
 
 # Coupe de la derniere carte
