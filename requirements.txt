@@ -3,7 +3,6 @@ dash-core-components==2.0.0
 dash-html-components==2.0.0
 dash-renderer==0.16.1
 dash-table==5.0.0
-pip install random2
 pip install regex
 pip install unidecode
 pip install pybase64
