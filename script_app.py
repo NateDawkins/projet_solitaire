@@ -387,5 +387,6 @@ def message_uncrypted(n_clicks, chiffred, key):
 
 def run_app():
     app.run_server()
-    
+
+# Lancement de l'application
 run_app()
