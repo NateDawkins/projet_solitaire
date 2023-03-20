@@ -2,8 +2,12 @@
 import random
 import base64
 import datetime
-from dash import Dash, dcc, html
+import dash_bootstrap_components as dbc
+import dash_core_components as dcc
+import dash_html_components as html
+import dash
 from dash.dependencies import Input, Output, State
+from flask import Flask
 import unidecode
 import re
 
@@ -85,11 +89,11 @@ def interpolationParJokers(liste_cartes):
     JokerRouge = liste_cartes.index(54)
     premierTas = liste_cartes[: min(JokerNoir, JokerRouge)]
     secondTas = liste_cartes[min(JokerNoir, JokerRouge) + 1 : max(JokerNoir, JokerRouge)]
-    troisiemeTas = liste_cartes[max(JokerNoir, JokerRouge) + 1:]
+    troisièmeTas = liste_cartes[max(JokerNoir, JokerRouge) + 1:]
     if min(JokerNoir, JokerRouge) == JokerNoir:
-        liste_cartes = troisiemeTas + [53] + secondTas + [54] + premierTas
+        liste_cartes = troisièmeTas + [53] + secondTas + [54] + premierTas
     else:
-        liste_cartes = troisiemeTas + [54] + secondTas + [53] + premierTas
+        liste_cartes = troisièmeTas + [54] + secondTas + [53] + premierTas
     return liste_cartes
 
 # Coupe de la derniere carte
@@ -155,7 +159,8 @@ def decodageCaractere(liste_nombre_a_decoder, clef_nombre):
 
 
 #### APPLI VISUEL AVEC DASH ####
-app = Dash(__name__)
+server = Flask(__name__)
+app = dash.Dash(server=server, external_stylesheets=[dbc.themes.FLATLY])
 
 app.layout = html.Div([
     
@@ -385,8 +390,5 @@ def message_uncrypted(n_clicks, chiffred, key):
     key_number = caractereToNombre(key)
     return decodageCaractere(chiffred_number, key_number)
 
-def run_app():
+if __name__=='__main__':
     app.run_server()
-
-# Lancement de l'application
-run_app()

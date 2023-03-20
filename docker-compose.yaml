@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+
+  dashboard:
+    build:
+      context: ./
+    container_name: dash_app
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - network
+
+networks:
+  network:
+    driver: bridge
